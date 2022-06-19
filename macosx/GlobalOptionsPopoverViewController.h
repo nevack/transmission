@@ -8,7 +8,7 @@
 
 @interface GlobalOptionsPopoverViewController : NSViewController
 
-- (instancetype)initWithHandle:(tr_session*)handle;
+- (instancetype)initWithHandle:(tr_session*)handle NS_DESIGNATED_INITIALIZER;
 
 - (IBAction)updatedDisplayString:(id)sender;
 

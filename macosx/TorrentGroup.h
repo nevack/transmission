@@ -8,7 +8,7 @@
 
 @interface TorrentGroup : NSObject
 
-- (instancetype)initWithGroup:(NSInteger)group;
+- (instancetype)initWithGroup:(NSInteger)group NS_DESIGNATED_INITIALIZER;
 
 @property(nonatomic, readonly) NSInteger groupIndex;
 @property(nonatomic, readonly) NSInteger groupOrderValue;

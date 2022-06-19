@@ -19,7 +19,7 @@
                            controller:(Controller*)controller
                           torrentFile:(NSString*)torrentFile
     deleteTorrentCheckEnableInitially:(BOOL)deleteTorrent
-                      canToggleDelete:(BOOL)canToggleDelete;
+                      canToggleDelete:(BOOL)canToggleDelete NS_DESIGNATED_INITIALIZER;
 
 - (void)setDestination:(id)sender;
 

@@ -320,7 +320,7 @@ bool trashDataFile(char const* filename, tr_error** error)
 
 - (void)startTransferIgnoringQueue:(BOOL)ignoreQueue
 {
-    if ([self alertForRemainingDiskSpace])
+    if (self.alertForRemainingDiskSpace)
     {
         ignoreQueue ? tr_torrentStartNow(self.fHandle) : tr_torrentStart(self.fHandle);
         [self update];
@@ -977,7 +977,7 @@ bool trashDataFile(char const* filename, tr_error** error)
     }
 
     //libtransmission uses "Set Location", Mac client uses "Move data file to..." - very hacky!
-    error = [error stringByReplacingOccurrencesOfString:@"Set Location" withString:[@"Move Data File To" stringByAppendingEllipsis]];
+    error = [error stringByReplacingOccurrencesOfString:@"Set Location" withString:(@"Move Data File To").stringByAppendingEllipsis];
 
     return error;
 }
@@ -1161,15 +1161,15 @@ bool trashDataFile(char const* filename, tr_error** error)
             break;
 
         case TR_STATUS_DOWNLOAD_WAIT:
-            string = [NSLocalizedString(@"Waiting to download", "Torrent -> status string") stringByAppendingEllipsis];
+            string = NSLocalizedString(@"Waiting to download", "Torrent -> status string").stringByAppendingEllipsis;
             break;
 
         case TR_STATUS_SEED_WAIT:
-            string = [NSLocalizedString(@"Waiting to seed", "Torrent -> status string") stringByAppendingEllipsis];
+            string = NSLocalizedString(@"Waiting to seed", "Torrent -> status string").stringByAppendingEllipsis;
             break;
 
         case TR_STATUS_CHECK_WAIT:
-            string = [NSLocalizedString(@"Waiting to check existing data", "Torrent -> status string") stringByAppendingEllipsis];
+            string = NSLocalizedString(@"Waiting to check existing data", "Torrent -> status string").stringByAppendingEllipsis;
             break;
 
         case TR_STATUS_CHECK:
@@ -1268,15 +1268,15 @@ bool trashDataFile(char const* filename, tr_error** error)
         break;
 
     case TR_STATUS_DOWNLOAD_WAIT:
-        string = [NSLocalizedString(@"Waiting to download", "Torrent -> status string") stringByAppendingEllipsis];
+        string = NSLocalizedString(@"Waiting to download", "Torrent -> status string").stringByAppendingEllipsis;
         break;
 
     case TR_STATUS_SEED_WAIT:
-        string = [NSLocalizedString(@"Waiting to seed", "Torrent -> status string") stringByAppendingEllipsis];
+        string = NSLocalizedString(@"Waiting to seed", "Torrent -> status string").stringByAppendingEllipsis;
         break;
 
     case TR_STATUS_CHECK_WAIT:
-        string = [NSLocalizedString(@"Waiting to check existing data", "Torrent -> status string") stringByAppendingEllipsis];
+        string = NSLocalizedString(@"Waiting to check existing data", "Torrent -> status string").stringByAppendingEllipsis;
         break;
 
     case TR_STATUS_CHECK:
@@ -1342,7 +1342,7 @@ bool trashDataFile(char const* filename, tr_error** error)
         }
 
     case TR_STATUS_CHECK_WAIT:
-        return [NSLocalizedString(@"Waiting to check existing data", "Torrent -> status string") stringByAppendingEllipsis];
+        return NSLocalizedString(@"Waiting to check existing data", "Torrent -> status string").stringByAppendingEllipsis;
 
     case TR_STATUS_CHECK:
         return [NSString stringWithFormat:@"%@ (%@)",

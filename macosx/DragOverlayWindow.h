@@ -8,7 +8,7 @@
 
 @interface DragOverlayWindow : NSWindow
 
-- (instancetype)initWithLib:(tr_session*)lib forWindow:(NSWindow*)window;
+- (instancetype)initWithLib:(tr_session*)lib forWindow:(NSWindow*)window NS_DESIGNATED_INITIALIZER;
 
 - (void)setTorrents:(NSArray*)files;
 - (void)setFile:(NSString*)file;

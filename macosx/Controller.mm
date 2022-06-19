@@ -121,7 +121,7 @@ typedef NS_ENUM(unsigned int, sortOrderTag) { //
 
 static void altSpeedToggledCallback([[maybe_unused]] tr_session* handle, bool active, bool byUser, void* controller)
 {
-    NSDictionary* dict = [[NSDictionary alloc] initWithObjects:@[ @(active), @(byUser) ] forKeys:@[ @"Active", @"ByUser" ]];
+    NSDictionary* dict = @{@"Active" : @(active), @"ByUser" : @(byUser)};
     [(__bridge Controller*)controller performSelectorOnMainThread:@selector(altSpeedToggledCallbackIsLimited:) withObject:dict
                                                     waitUntilDone:NO];
 }
@@ -511,7 +511,7 @@ static void removeKeRangerRansomware()
         _fLib = tr_sessionInit(configDir, YES, &settings);
         tr_variantFree(&settings);
 
-        _fConfigDirectory = [[NSString alloc] initWithUTF8String:configDir];
+        _fConfigDirectory = @(configDir);
 
         NSApp.delegate = self;
 
@@ -568,7 +568,7 @@ static void removeKeRangerRansomware()
     self.fWindow.excludedFromWindowsMenu = YES;
 
     //make window primary view in fullscreen
-    [self.fWindow setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
+    self.fWindow.collectionBehavior = NSWindowCollectionBehaviorFullScreenPrimary;
 
     //set table size
     BOOL const small = [self.fDefaults boolForKey:@"SmallView"];
@@ -829,7 +829,7 @@ static void removeKeRangerRansomware()
             alert.informativeText = donateMessage;
             alert.alertStyle = NSAlertStyleInformational;
 
-            [alert addButtonWithTitle:[NSLocalizedString(@"Donate", "Donation beg -> button") stringByAppendingEllipsis]];
+            [alert addButtonWithTitle:NSLocalizedString(@"Donate", "Donation beg -> button").stringByAppendingEllipsis];
             NSButton* noDonateButton = [alert addButtonWithTitle:NSLocalizedString(@"Nope", "Donation beg -> button")];
             noDonateButton.keyEquivalent = @"\e"; //escape key
 
@@ -1021,7 +1021,7 @@ static void removeKeRangerRansomware()
         NSString* message = [NSString
             stringWithFormat:NSLocalizedString(@"It appears that the file \"%@\" from %@ is not a torrent file.", "Download not a torrent -> message"),
                              suggestedName,
-                             [download.request.URL.absoluteString stringByRemovingPercentEncoding]];
+                             download.request.URL.absoluteString.stringByRemovingPercentEncoding];
 
         NSAlert* alert = [[NSAlert alloc] init];
         [alert addButtonWithTitle:NSLocalizedString(@"OK", "Download not a torrent -> button")];
@@ -1046,7 +1046,7 @@ static void removeKeRangerRansomware()
 {
     NSString* message = [NSString
         stringWithFormat:NSLocalizedString(@"The torrent could not be downloaded from %@: %@.", "Torrent download failed -> message"),
-                         [download.request.URL.absoluteString stringByRemovingPercentEncoding],
+                         download.request.URL.absoluteString.stringByRemovingPercentEncoding,
                          error.localizedDescription];
 
     NSAlert* alert = [[NSAlert alloc] init];
@@ -1342,7 +1342,7 @@ static void removeKeRangerRansomware()
 //called on by applescript
 - (void)open:(NSArray*)files
 {
-    NSDictionary* dict = [[NSDictionary alloc] initWithObjects:@[ files, @(ADD_MANUAL) ] forKeys:@[ @"Filenames", @"AddType" ]];
+    NSDictionary* dict = @{ @"Filenames" : files, @"AddType" : @(ADD_MANUAL) };
     [self performSelectorOnMainThread:@selector(openFilesWithDict:) withObject:dict waitUntilDone:NO];
 }
 
@@ -1365,9 +1365,10 @@ static void removeKeRangerRansomware()
                 [filenames addObject:url.path];
             }
 
-            NSDictionary* dictionary = [[NSDictionary alloc]
-                initWithObjects:@[ filenames, sender == self.fOpenIgnoreDownloadFolder ? @(ADD_SHOW_OPTIONS) : @(ADD_MANUAL) ]
-                        forKeys:@[ @"Filenames", @"AddType" ]];
+            NSDictionary* dictionary = @{
+                @"Filenames" : filenames,
+                @"AddType" : sender == self.fOpenIgnoreDownloadFolder ? @(ADD_SHOW_OPTIONS) : @(ADD_MANUAL)
+            };
             [self performSelectorOnMainThread:@selector(openFilesWithDict:) withObject:dictionary waitUntilDone:NO];
         }
     }];
@@ -1543,7 +1544,7 @@ static void removeKeRangerRansomware()
         [self.fWindow beginSheet:self.fUrlSheetController.window completionHandler:^(NSModalResponse returnCode) {
             if (returnCode == 1)
             {
-                NSString* urlString = [self.fUrlSheetController urlString];
+                NSString* urlString = self.fUrlSheetController.urlString;
                 urlString = [urlString stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceAndNewlineCharacterSet];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self openURL:urlString];
@@ -4561,7 +4562,7 @@ static void removeKeRangerRansomware()
         {
             if (![title hasSuffix:ellipsis])
             {
-                menuItem.title = [title stringByAppendingEllipsis];
+                menuItem.title = title.stringByAppendingEllipsis;
             }
         }
         else
@@ -4584,7 +4585,7 @@ static void removeKeRangerRansomware()
         {
             if (![title hasSuffix:ellipsis])
             {
-                menuItem.title = [title stringByAppendingEllipsis];
+                menuItem.title = title.stringByAppendingEllipsis;
             }
         }
         else

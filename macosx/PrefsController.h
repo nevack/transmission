@@ -13,7 +13,7 @@
 
 + (NSInteger)dateToTimeSum:(NSDate*)date;
 
-- (instancetype)initWithHandle:(tr_session*)handle;
+- (instancetype)initWithHandle:(tr_session*)handle NS_DESIGNATED_INITIALIZER;
 
 - (void)rpcUpdatePrefs;
 

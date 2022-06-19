@@ -10,7 +10,7 @@
 
 @interface Badger : NSObject
 
-- (instancetype)initWithLib:(tr_session*)lib;
+- (instancetype)initWithLib:(tr_session*)lib NS_DESIGNATED_INITIALIZER;
 
 - (void)updateBadgeWithDownload:(CGFloat)downloadRate upload:(CGFloat)uploadRate;
 - (void)addCompletedTorrent:(Torrent*)torrent;

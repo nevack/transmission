@@ -8,7 +8,7 @@
 
 @interface StatusBarController : NSViewController
 
-- (instancetype)initWithLib:(tr_session*)lib;
+- (instancetype)initWithLib:(tr_session*)lib NS_DESIGNATED_INITIALIZER;
 
 - (void)updateWithDownload:(CGFloat)dlRate upload:(CGFloat)ulRate;
 

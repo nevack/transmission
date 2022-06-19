@@ -154,7 +154,7 @@
     switch (self.fStat.announceState)
     {
     case TR_TRACKER_ACTIVE:
-        return [NSLocalizedString(@"Announce in progress", "Tracker next announce") stringByAppendingEllipsis];
+        return NSLocalizedString(@"Announce in progress", "Tracker next announce").stringByAppendingEllipsis;
 
     case TR_TRACKER_WAITING:
         {
@@ -173,7 +173,7 @@
             return [NSString stringWithFormat:NSLocalizedString(@"Next announce in %@", "Tracker next announce"), timeString];
         }
     case TR_TRACKER_QUEUED:
-        return [NSLocalizedString(@"Announce is queued", "Tracker next announce") stringByAppendingEllipsis];
+        return NSLocalizedString(@"Announce is queued", "Tracker next announce").stringByAppendingEllipsis;
 
     case TR_TRACKER_INACTIVE:
         return self.fStat.isBackup ? NSLocalizedString(@"Tracker will be used as a backup", "Tracker next announce") :

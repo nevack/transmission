@@ -8,7 +8,7 @@
 
 @interface BadgeView : NSView
 
-- (instancetype)initWithLib:(tr_session*)lib;
+- (instancetype)initWithLib:(tr_session*)lib NS_DESIGNATED_INITIALIZER;
 
 - (BOOL)setRatesWithDownload:(CGFloat)downloadRate upload:(CGFloat)uploadRate;
 

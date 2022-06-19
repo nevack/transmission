@@ -11,7 +11,9 @@
 
 @property(nonatomic, readonly) Torrent* torrent;
 
-- (instancetype)initWithTorrent:(Torrent*)torrent destination:(NSString*)path controller:(Controller*)controller;
+- (instancetype)initWithTorrent:(Torrent*)torrent
+                    destination:(NSString*)path
+                     controller:(Controller*)controller NS_DESIGNATED_INITIALIZER;
 
 - (void)setDestination:(id)sender;
 

@@ -55,7 +55,7 @@ BlocklistDownloaderViewController* fBLViewController = nil;
 
 - (void)setStatusStarting
 {
-    self.fTextField.stringValue = [NSLocalizedString(@"Connecting to site", "Blocklist -> message") stringByAppendingEllipsis];
+    self.fTextField.stringValue = NSLocalizedString(@"Connecting to site", "Blocklist -> message").stringByAppendingEllipsis;
     self.fProgressBar.indeterminate = YES;
 }
 
@@ -84,7 +84,7 @@ BlocklistDownloaderViewController* fBLViewController = nil;
     self.fProgressBar.indeterminate = YES;
     [self.fProgressBar startAnimation:self];
 
-    self.fTextField.stringValue = [NSLocalizedString(@"Processing blocklist", "Blocklist -> message") stringByAppendingEllipsis];
+    self.fTextField.stringValue = NSLocalizedString(@"Processing blocklist", "Blocklist -> message").stringByAppendingEllipsis;
     self.fButton.enabled = NO;
 }
 
@@ -133,7 +133,7 @@ BlocklistDownloaderViewController* fBLViewController = nil;
     [NSBundle.mainBundle loadNibNamed:@"BlocklistStatusWindow" owner:self topLevelObjects:NULL];
 
     BlocklistDownloader* downloader = [BlocklistDownloader downloader];
-    [downloader setViewController:self]; //do before showing the sheet to ensure it doesn't slide out with placeholder text
+    downloader.viewController = self; //do before showing the sheet to ensure it doesn't slide out with placeholder text
 
     [self.fPrefsController.window beginSheet:self.fStatusWindow completionHandler:nil];
 }

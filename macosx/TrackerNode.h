@@ -12,7 +12,7 @@
 
 @property(nonatomic, weak, readonly) Torrent* torrent;
 
-- (instancetype)initWithTrackerView:(tr_tracker_view const*)stat torrent:(Torrent*)torrent;
+- (instancetype)initWithTrackerView:(tr_tracker_view const*)stat torrent:(Torrent*)torrent NS_DESIGNATED_INITIALIZER;
 
 - (BOOL)isEqual:(id)object;
 

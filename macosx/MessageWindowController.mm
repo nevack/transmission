@@ -67,7 +67,7 @@
     self.window.title = NSLocalizedString(@"Message Log", "Message window -> title");
 
     //disable fullscreen support
-    [window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenNone];
+    window.collectionBehavior = NSWindowCollectionBehaviorFullScreenNone;
 
     //set images and text for popup button items
     [self.fLevelButton itemAtIndex:LEVEL_ERROR].title = NSLocalizedString(@"Error", "Message window -> level string");
@@ -90,7 +90,7 @@
     [self.fMessageTable tableColumnWithIdentifier:@"Message"].headerCell.title = NSLocalizedString(@"Message", "Message window -> table column");
 
     //set and size buttons
-    self.fSaveButton.title = [NSLocalizedString(@"Save", "Message window -> save button") stringByAppendingEllipsis];
+    self.fSaveButton.title = NSLocalizedString(@"Save", "Message window -> save button").stringByAppendingEllipsis;
     [self.fSaveButton sizeToFit];
 
     NSRect saveButtonFrame = self.fSaveButton.frame;

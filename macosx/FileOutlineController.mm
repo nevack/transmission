@@ -679,7 +679,7 @@ typedef NS_ENUM(unsigned int, filePriorityMenuTag) { //
     [menu addItem:[NSMenuItem separatorItem]];
 
     //rename
-    item = [[NSMenuItem alloc] initWithTitle:[NSLocalizedString(@"Rename File", "File Outline -> Menu") stringByAppendingEllipsis]
+    item = [[NSMenuItem alloc] initWithTitle:NSLocalizedString(@"Rename File", "File Outline -> Menu").stringByAppendingEllipsis
                                       action:@selector(renameSelected:)
                                keyEquivalent:@""];
     item.target = self;

@@ -11,7 +11,7 @@
 + (CreatorWindowController*)createTorrentFile:(tr_session*)handle;
 + (CreatorWindowController*)createTorrentFile:(tr_session*)handle forFile:(NSURL*)file;
 
-- (instancetype)initWithHandle:(tr_session*)handle path:(NSURL*)path;
+- (instancetype)initWithHandle:(tr_session*)handle path:(NSURL*)path NS_DESIGNATED_INITIALIZER;
 
 - (IBAction)setLocation:(id)sender;
 - (IBAction)create:(id)sender;

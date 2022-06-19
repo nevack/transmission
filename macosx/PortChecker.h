@@ -17,7 +17,9 @@ typedef NS_ENUM(unsigned int, port_status_t) { //
 
 @property(nonatomic, readonly) port_status_t status;
 
-- (instancetype)initForPort:(NSInteger)portNumber delay:(BOOL)delay withDelegate:(NSObject<PortCheckerDelegate>*)delegate;
+- (instancetype)initForPort:(NSInteger)portNumber
+                      delay:(BOOL)delay
+               withDelegate:(NSObject<PortCheckerDelegate>*)delegate NS_DESIGNATED_INITIALIZER;
 - (void)cancelProbe;
 
 @end

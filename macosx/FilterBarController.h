@@ -20,7 +20,7 @@
 
 @property(nonatomic, readonly) NSArray<NSString*>* searchStrings;
 
-- (instancetype)init;
+- (instancetype)init NS_DESIGNATED_INITIALIZER;
 
 - (void)setFilter:(id)sender;
 - (void)switchFilter:(BOOL)right;
